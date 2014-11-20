@@ -415,8 +415,8 @@ namespace FCM_Manager
             RX_Quat.qDiff[1] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.qDiff[2] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.qDiff[3] = BitConverter.ToSingle(ba, i += 4);
-            RX_Quat.vPos[0] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.vPos[1] = BitConverter.ToSingle(ba, i += 4);
+            RX_Quat.vPos[0] = -BitConverter.ToSingle(ba, i += 4);
             RX_Quat.vPos[2] = BitConverter.ToSingle(ba, i += 4);
 
             form_3Dcuboid.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qAct);

@@ -29,7 +29,7 @@ namespace FCM_Manager
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonConnect = new System.Windows.Forms.Button();
             this.textBoxMenu = new System.Windows.Forms.TextBox();
             this.btnGetData = new System.Windows.Forms.Button();
@@ -54,6 +54,11 @@ namespace FCM_Manager
             this.btnBoot = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ColID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColuValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColUpper = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColLower = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonSaveFile = new System.Windows.Forms.Button();
             this.buttonLoadFile = new System.Windows.Forms.Button();
             this.timerParView = new System.Windows.Forms.Timer(this.components);
@@ -62,11 +67,6 @@ namespace FCM_Manager
             this.btnReset = new System.Windows.Forms.Button();
             this.button_disconnect = new System.Windows.Forms.Button();
             this.buttonRefreshPar = new System.Windows.Forms.Button();
-            this.ColID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColuValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColUpper = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColLower = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -235,7 +235,7 @@ namespace FCM_Manager
             this.btnErr3D.Name = "btnErr3D";
             this.btnErr3D.Size = new System.Drawing.Size(75, 21);
             this.btnErr3D.TabIndex = 5;
-            this.btnErr3D.Text = "Error 3D";
+            this.btnErr3D.Text = "Sim 3D";
             this.btnErr3D.UseVisualStyleBackColor = true;
             this.btnErr3D.Click += new System.EventHandler(this.btnErr3D_Click);
             // 
@@ -318,6 +318,42 @@ namespace FCM_Manager
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
+            // ColID
+            // 
+            this.ColID.FillWeight = 76.14214F;
+            this.ColID.HeaderText = "ID";
+            this.ColID.Name = "ColID";
+            this.ColID.ReadOnly = true;
+            // 
+            // ColuName
+            // 
+            this.ColuName.FillWeight = 105.9645F;
+            this.ColuName.HeaderText = "Name";
+            this.ColuName.Name = "ColuName";
+            this.ColuName.ReadOnly = true;
+            // 
+            // ColuValue
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColuValue.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColuValue.FillWeight = 105.9645F;
+            this.ColuValue.HeaderText = "Value";
+            this.ColuValue.Name = "ColuValue";
+            // 
+            // ColUpper
+            // 
+            this.ColUpper.FillWeight = 105.9645F;
+            this.ColUpper.HeaderText = "Upper";
+            this.ColUpper.Name = "ColUpper";
+            this.ColUpper.ReadOnly = true;
+            // 
+            // ColLower
+            // 
+            this.ColLower.FillWeight = 105.9645F;
+            this.ColLower.HeaderText = "Lower";
+            this.ColLower.Name = "ColLower";
+            this.ColLower.ReadOnly = true;
+            // 
             // buttonSaveFile
             // 
             this.buttonSaveFile.Location = new System.Drawing.Point(95, 445);
@@ -391,42 +427,6 @@ namespace FCM_Manager
             this.buttonRefreshPar.UseVisualStyleBackColor = true;
             this.buttonRefreshPar.Click += new System.EventHandler(this.buttonRefreshPar_Click);
             // 
-            // ColID
-            // 
-            this.ColID.FillWeight = 76.14214F;
-            this.ColID.HeaderText = "ID";
-            this.ColID.Name = "ColID";
-            this.ColID.ReadOnly = true;
-            // 
-            // ColuName
-            // 
-            this.ColuName.FillWeight = 105.9645F;
-            this.ColuName.HeaderText = "Name";
-            this.ColuName.Name = "ColuName";
-            this.ColuName.ReadOnly = true;
-            // 
-            // ColuValue
-            // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColuValue.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColuValue.FillWeight = 105.9645F;
-            this.ColuValue.HeaderText = "Value";
-            this.ColuValue.Name = "ColuValue";
-            // 
-            // ColUpper
-            // 
-            this.ColUpper.FillWeight = 105.9645F;
-            this.ColUpper.HeaderText = "Upper";
-            this.ColUpper.Name = "ColUpper";
-            this.ColUpper.ReadOnly = true;
-            // 
-            // ColLower
-            // 
-            this.ColLower.FillWeight = 105.9645F;
-            this.ColLower.HeaderText = "Lower";
-            this.ColLower.Name = "ColLower";
-            this.ColLower.ReadOnly = true;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -466,7 +466,7 @@ namespace FCM_Manager
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainWindow";
-            this.Text = "FCM Manager 2.0.6";
+            this.Text = "FCM Manager 2.1.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
