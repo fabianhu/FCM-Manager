@@ -22,17 +22,17 @@ namespace FCM_Manager
     class RXQuat
     {
         public float[] qAct, qSet, qDiff;
-        public Int32 gov_x, gov_y, gov_z;	// Governor out
+        public float[] vPos;
         public Int32 h;					// height in mm (barometric measurement)
         public Int16 temp0;		// Temperature in 10th °C
         public Int16 temp1;		// Temperature in 10th °C
 
         public RXQuat()
         {
-
             qAct = new float[4];
             qSet = new float[4];
             qDiff = new float[4];
+            vPos = new float[3];
         }
     }
     class ParameterItem
