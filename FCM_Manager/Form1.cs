@@ -415,9 +415,9 @@ namespace FCM_Manager
             RX_Quat.qDiff[1] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.qDiff[2] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.qDiff[3] = BitConverter.ToSingle(ba, i += 4);
-            RX_Quat.vPos[1] = BitConverter.ToSingle(ba, i += 4);
-            RX_Quat.vPos[0] = -BitConverter.ToSingle(ba, i += 4);
-            RX_Quat.vPos[2] = BitConverter.ToSingle(ba, i += 4);
+            RX_Quat.vPos[1] = -BitConverter.ToSingle(ba, i += 4);
+            RX_Quat.vPos[0] = BitConverter.ToSingle(ba, i += 4);
+            RX_Quat.vPos[2] = BitConverter.ToSingle(ba, i += 4)-3.0f;
 
             form_3Dcuboid.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qAct);
             form_3Dcuboid2.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qSet);
@@ -607,7 +607,8 @@ namespace FCM_Manager
         {
             float[] q = new float[4] { 1, 0, 0, 0 };
             form_3Dcuboid3.RotationMatrix = ConvertToRotationMatrix(q);
-            form_3Dcuboid3.Text = "Diff 3D";
+            form_3Dcuboid3.CameraDistance = 50;
+            form_3Dcuboid3.Text = "Sim 3D";
             form_3Dcuboid3.Show();
         }
 

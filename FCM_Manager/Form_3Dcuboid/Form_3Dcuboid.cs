@@ -134,7 +134,7 @@ namespace FCM_Manager
         /// Initializes a new instance of the <see cref="Form_3Dcuboid"/> class.
         /// </summary>
         public Form_3Dcuboid()
-            : this(new string[] { "Form_3Dcuboid/Right.png", "Form_3Dcuboid/Left.png", "Form_3Dcuboid/Back.png", "Form_3Dcuboid/Front.png", "Form_3Dcuboid/Top.png", "Form_3Dcuboid/Bottom.png" }, new float[] { 6, 4, 2 }, CameraViews.Right, 50.0f)
+            : this(new string[] { "Form_3Dcuboid/Right.png", "Form_3Dcuboid/Left.png", "Form_3Dcuboid/Back.png", "Form_3Dcuboid/Front.png", "Form_3Dcuboid/Top.png", "Form_3Dcuboid/Bottom.png" }, new float[] { 1.5f, 1, 0.5f }, CameraViews.Right, 50.0f)
         {
         }
 
