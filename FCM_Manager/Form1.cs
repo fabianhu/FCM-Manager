@@ -415,14 +415,16 @@ namespace FCM_Manager
             RX_Quat.qDiff[1] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.qDiff[2] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.qDiff[3] = BitConverter.ToSingle(ba, i += 4);
-            RX_Quat.gov_x = BitConverter.ToInt32(ba, i += 4);
-            RX_Quat.gov_y = BitConverter.ToInt32(ba, i += 4);
-            RX_Quat.gov_z = BitConverter.ToInt32(ba, i += 4);
+            RX_Quat.vPos[1] = -BitConverter.ToSingle(ba, i += 4);
+            RX_Quat.vPos[0] = BitConverter.ToSingle(ba, i += 4);
+            RX_Quat.vPos[2] = BitConverter.ToSingle(ba, i += 4)-3.0f;
 
             form_3Dcuboid.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qAct);
             form_3Dcuboid2.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qSet);
             form_3Dcuboid3.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qDiff);
-            sc_gov.AddData(RX_Quat.gov_x, RX_Quat.gov_y, RX_Quat.gov_z);
+            form_3Dcuboid3.TranslationVector = RX_Quat.vPos; // add the translation! // fixme edit angle / camera distance / background image etc.
+
+            sc_gov.AddData(RX_Quat.vPos[0], RX_Quat.vPos[1], RX_Quat.vPos[2]);
 
             framecounter++;
 
@@ -605,7 +607,8 @@ namespace FCM_Manager
         {
             float[] q = new float[4] { 1, 0, 0, 0 };
             form_3Dcuboid3.RotationMatrix = ConvertToRotationMatrix(q);
-            form_3Dcuboid3.Text = "Diff 3D";
+            form_3Dcuboid3.CameraDistance = 50;
+            form_3Dcuboid3.Text = "Sim 3D";
             form_3Dcuboid3.Show();
         }
 
