@@ -415,14 +415,20 @@ namespace FCM_Manager
             RX_Quat.qDiff[1] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.qDiff[2] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.qDiff[3] = BitConverter.ToSingle(ba, i += 4);
-            RX_Quat.vPos[1] = -BitConverter.ToSingle(ba, i += 4);
             RX_Quat.vPos[0] = BitConverter.ToSingle(ba, i += 4);
-            RX_Quat.vPos[2] = BitConverter.ToSingle(ba, i += 4)-3.0f;
+            RX_Quat.vPos[1] = BitConverter.ToSingle(ba, i += 4);
+            RX_Quat.vPos[2] = BitConverter.ToSingle(ba, i += 4);
 
             form_3Dcuboid.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qAct);
             form_3Dcuboid2.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qSet);
             form_3Dcuboid3.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qDiff);
-            form_3Dcuboid3.TranslationVector = RX_Quat.vPos; // add the translation! // fixme edit angle / camera distance / background image etc.
+
+            float[] ftemp = new float[3];
+            ftemp[0] = -RX_Quat.vPos[1];
+            ftemp[1] = RX_Quat.vPos[0];
+            ftemp[2] = RX_Quat.vPos[2]-3.0f; // add the translation! 
+
+            form_3Dcuboid3.TranslationVector = ftemp;// fixme edit angle / camera distance / background image etc.
 
             sc_gov.AddData(RX_Quat.vPos[0], RX_Quat.vPos[1], RX_Quat.vPos[2]);
 

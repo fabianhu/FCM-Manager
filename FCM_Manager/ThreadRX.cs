@@ -259,7 +259,7 @@ namespace FCM_Manager
                     myCommStatus = e_CommState.Found;
                     // FCM answer found!
                     // extract data 
-                    m_VersionString = m_byRxBuffer[6].ToString() + "." + m_byRxBuffer[7].ToString() + "." + (m_byRxBuffer[8]*0xff+ m_byRxBuffer[9]).ToString() ;
+                    m_VersionString = m_byRxBuffer[6].ToString() + "." + m_byRxBuffer[7].ToString() + "." + (m_byRxBuffer[8]*256+ m_byRxBuffer[9]).ToString() ;
 
                     if (m_byRxBuffer[6] >= 100)
                     {
