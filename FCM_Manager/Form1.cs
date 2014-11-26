@@ -88,7 +88,7 @@ namespace FCM_Manager
             form_3Dcuboid.MinimizeInsteadOfClose = true;
             form_3Dcuboid2 = new Form_3Dcuboid();
             form_3Dcuboid2.MinimizeInsteadOfClose = true;
-            form_3Dcuboid3 = new Form_3Dcuboid();
+            form_3Dcuboid3 = new Form_3Dcuboid(new string[] { "Form_3Dcuboid/Right.png", "Form_3Dcuboid/Left.png", "Form_3Dcuboid/Back.png", "Form_3Dcuboid/Front.png", "Form_3Dcuboid/Top.png", "Form_3Dcuboid/Bottom.png" }, new float[] { 1.5f, 1, 0.5f }, Form_3Dcuboid.CameraViews.Right, 50.0f);
             form_3Dcuboid3.MinimizeInsteadOfClose = true;
         }
 
@@ -424,8 +424,8 @@ namespace FCM_Manager
             form_3Dcuboid3.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qDiff);
 
             float[] ftemp = new float[3];
-            ftemp[0] = -RX_Quat.vPos[1];
-            ftemp[1] = RX_Quat.vPos[0];
+            ftemp[0] = RX_Quat.vPos[1];
+            ftemp[1] = -RX_Quat.vPos[0];
             ftemp[2] = RX_Quat.vPos[2]-3.0f; // add the translation! 
 
             form_3Dcuboid3.TranslationVector = ftemp;// fixme edit angle / camera distance / background image etc.
