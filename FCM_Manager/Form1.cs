@@ -947,13 +947,13 @@ namespace FCM_Manager
 
             if (RX_Parameteritems.Count == 0)
             {
-                MessageBox.Show("No parameters received. Try reconnect");
+                //MessageBox.Show("No parameters received. Try reconnect");
                 return false;
             }
             else
                 if (RX_Parameteritems.Count != MyActivePort.m_MenuSize)
                 {
-                    MessageBox.Show("Not enough parameters received. Try reconnect");
+                    //MessageBox.Show("Not enough parameters received. Try reconnect");
                     return false;
                 }
 
