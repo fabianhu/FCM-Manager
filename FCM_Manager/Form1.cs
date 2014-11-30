@@ -84,12 +84,12 @@ namespace FCM_Manager
 
             // only 4 possible ! // fixme why
 
-            form_3Dcuboid = new Form_3Dcuboid();
-            form_3Dcuboid.MinimizeInsteadOfClose = true;
-            form_3Dcuboid2 = new Form_3Dcuboid();
-            form_3Dcuboid2.MinimizeInsteadOfClose = true;
-            form_3Dcuboid3 = new Form_3Dcuboid(new string[] { "Form_3Dcuboid/Right.png", "Form_3Dcuboid/Left.png", "Form_3Dcuboid/Back.png", "Form_3Dcuboid/Front.png", "Form_3Dcuboid/Top.png", "Form_3Dcuboid/Bottom.png" }, new float[] { 1.5f, 1, 0.5f }, Form_3Dcuboid.CameraViews.Right, 80.0f);
-            form_3Dcuboid3.MinimizeInsteadOfClose = true;
+            form_3Dcuboid_Act = new Form_3Dcuboid();
+            form_3Dcuboid_Act.MinimizeInsteadOfClose = true;
+            form_3Dcuboid_Set = new Form_3Dcuboid();
+            form_3Dcuboid_Set.MinimizeInsteadOfClose = true;
+            form_3Dcuboid_SIM = new Form_3Dcuboid(new string[] { "Form_3Dcuboid/Right.png", "Form_3Dcuboid/Left.png", "Form_3Dcuboid/Back.png", "Form_3Dcuboid/Front.png", "Form_3Dcuboid/Top.png", "Form_3Dcuboid/Bottom.png" }, new float[] { 1.5f, 1, 0.5f }, Form_3Dcuboid.CameraViews.Right, 80.0f);
+            form_3Dcuboid_SIM.MinimizeInsteadOfClose = true;
         }
 
 
@@ -393,9 +393,9 @@ namespace FCM_Manager
 
 
 
-        private Form_3Dcuboid form_3Dcuboid;
-        private Form_3Dcuboid form_3Dcuboid2;
-        private Form_3Dcuboid form_3Dcuboid3;
+        private Form_3Dcuboid form_3Dcuboid_Act;
+        private Form_3Dcuboid form_3Dcuboid_Set;
+        private Form_3Dcuboid form_3Dcuboid_SIM;
 
 
 
@@ -411,24 +411,24 @@ namespace FCM_Manager
             RX_Quat.qSet[1] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.qSet[2] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.qSet[3] = BitConverter.ToSingle(ba, i += 4);
-            RX_Quat.qDiff[0] = BitConverter.ToSingle(ba, i += 4);
-            RX_Quat.qDiff[1] = BitConverter.ToSingle(ba, i += 4);
-            RX_Quat.qDiff[2] = BitConverter.ToSingle(ba, i += 4);
-            RX_Quat.qDiff[3] = BitConverter.ToSingle(ba, i += 4);
+            RX_Quat.qSim[0] = BitConverter.ToSingle(ba, i += 4);
+            RX_Quat.qSim[1] = BitConverter.ToSingle(ba, i += 4);
+            RX_Quat.qSim[2] = BitConverter.ToSingle(ba, i += 4);
+            RX_Quat.qSim[3] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.vPos[0] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.vPos[1] = BitConverter.ToSingle(ba, i += 4);
             RX_Quat.vPos[2] = BitConverter.ToSingle(ba, i += 4);
 
-            form_3Dcuboid.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qAct);
-            form_3Dcuboid2.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qSet);
-            form_3Dcuboid3.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qDiff);
+            form_3Dcuboid_Act.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qAct);
+            form_3Dcuboid_Set.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qSet);
+            form_3Dcuboid_SIM.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qSim);
 
             float[] ftemp = new float[3];
             ftemp[0] = RX_Quat.vPos[1];
             ftemp[1] = -RX_Quat.vPos[0];
             ftemp[2] = RX_Quat.vPos[2]-3.0f; // add the translation! 
 
-            form_3Dcuboid3.TranslationVector = ftemp;// fixme edit angle / camera distance / background image etc.
+            form_3Dcuboid_SIM.TranslationVector = ftemp;// fixme edit angle / camera distance / background image etc.
 
             sc_gov.AddData(RX_Quat.vPos[0], RX_Quat.vPos[1], RX_Quat.vPos[2]);
 
@@ -596,25 +596,25 @@ namespace FCM_Manager
         private void btn_ShowActual_Click(object sender, EventArgs e)
         {
             float[] q = new float[4] { 1, 0, 0, 0 };
-            form_3Dcuboid.RotationMatrix = ConvertToRotationMatrix(q);
-            form_3Dcuboid.Text = "Actual 3D";
-            form_3Dcuboid.Show();
+            form_3Dcuboid_Act.RotationMatrix = ConvertToRotationMatrix(q);
+            form_3Dcuboid_Act.Text = "Actual 3D";
+            form_3Dcuboid_Act.Show();
         }
 
         private void btnSet_Click(object sender, EventArgs e)
         {
             float[] q = new float[4] { 1, 0, 0, 0 };
-            form_3Dcuboid2.RotationMatrix = ConvertToRotationMatrix(q);
-            form_3Dcuboid2.Text = "Setpoint 3D";
-            form_3Dcuboid2.Show();
+            form_3Dcuboid_Set.RotationMatrix = ConvertToRotationMatrix(q);
+            form_3Dcuboid_Set.Text = "Setpoint 3D";
+            form_3Dcuboid_Set.Show();
         }
 
         private void btnErr3D_Click(object sender, EventArgs e)
         {
             float[] q = new float[4] { 1, 0, 0, 0 };
-            form_3Dcuboid3.RotationMatrix = ConvertToRotationMatrix(q);
-            form_3Dcuboid3.Text = "Sim 3D";
-            form_3Dcuboid3.Show();
+            form_3Dcuboid_SIM.RotationMatrix = ConvertToRotationMatrix(q);
+            form_3Dcuboid_SIM.Text = "Sim 3D";
+            form_3Dcuboid_SIM.Show();
         }
 
 

@@ -21,7 +21,7 @@ namespace FCM_Manager
     }
     class RXQuat
     {
-        public float[] qAct, qSet, qDiff;
+        public float[] qAct, qSet, qSim;
         public float[] vPos;
         public Int32 h;					// height in mm (barometric measurement)
         public Int16 temp0;		// Temperature in 10th °C
@@ -31,7 +31,7 @@ namespace FCM_Manager
         {
             qAct = new float[4];
             qSet = new float[4];
-            qDiff = new float[4];
+            qSim = new float[4];
             vPos = new float[3];
         }
     }
