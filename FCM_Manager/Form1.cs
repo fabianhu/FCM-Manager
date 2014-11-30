@@ -88,7 +88,7 @@ namespace FCM_Manager
             form_3Dcuboid.MinimizeInsteadOfClose = true;
             form_3Dcuboid2 = new Form_3Dcuboid();
             form_3Dcuboid2.MinimizeInsteadOfClose = true;
-            form_3Dcuboid3 = new Form_3Dcuboid(new string[] { "Form_3Dcuboid/Right.png", "Form_3Dcuboid/Left.png", "Form_3Dcuboid/Back.png", "Form_3Dcuboid/Front.png", "Form_3Dcuboid/Top.png", "Form_3Dcuboid/Bottom.png" }, new float[] { 1.5f, 1, 0.5f }, Form_3Dcuboid.CameraViews.Right, 50.0f);
+            form_3Dcuboid3 = new Form_3Dcuboid(new string[] { "Form_3Dcuboid/Right.png", "Form_3Dcuboid/Left.png", "Form_3Dcuboid/Back.png", "Form_3Dcuboid/Front.png", "Form_3Dcuboid/Top.png", "Form_3Dcuboid/Bottom.png" }, new float[] { 1.5f, 1, 0.5f }, Form_3Dcuboid.CameraViews.Right, 80.0f);
             form_3Dcuboid3.MinimizeInsteadOfClose = true;
         }
 
@@ -613,7 +613,6 @@ namespace FCM_Manager
         {
             float[] q = new float[4] { 1, 0, 0, 0 };
             form_3Dcuboid3.RotationMatrix = ConvertToRotationMatrix(q);
-            form_3Dcuboid3.CameraDistance = 50;
             form_3Dcuboid3.Text = "Sim 3D";
             form_3Dcuboid3.Show();
         }
