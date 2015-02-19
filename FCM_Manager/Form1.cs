@@ -427,8 +427,8 @@ namespace FCM_Manager
             form_3Dcuboid_SIM.RotationMatrix = ConvertToRotationMatrix(RX_Quat.qSim);
 
             float[] ftemp = new float[3];
-            ftemp[0] = RX_Quat.vPos[1];
-            ftemp[1] = -RX_Quat.vPos[0];
+            ftemp[0] = -RX_Quat.vPos[1];
+            ftemp[1] = RX_Quat.vPos[0];
             ftemp[2] = RX_Quat.vPos[2]-3.0f; // add the translation! 
 
             form_3Dcuboid_SIM.TranslationVector = ftemp;// fixme edit angle / camera distance / background image etc.
