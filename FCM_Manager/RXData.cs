@@ -23,9 +23,10 @@ namespace FCM_Manager
     {
         public float[] qAct, qSet, qSim;
         public float[] vPos;
-        public Int32 h;					// height in mm (barometric measurement)
+        public float[] vDat;
+        /*public Int32 h;					// height in mm (barometric measurement)
         public Int16 temp0;		// Temperature in 10th °C
-        public Int16 temp1;		// Temperature in 10th °C
+        public Int16 temp1;		// Temperature in 10th °C*/
 
         public RXQuat()
         {
@@ -33,6 +34,7 @@ namespace FCM_Manager
             qSet = new float[4];
             qSim = new float[4];
             vPos = new float[3];
+            vDat = new float[3];
         }
     }
     class ParameterItem
